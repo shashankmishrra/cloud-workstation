@@ -1,168 +1,202 @@
-# Cloud Workstation
+<div align="center">
 
-> Infrastructure as Code for a reproducible Ubuntu development workstation.
+# ☁️ Cloud Workstation
 
-Cloud Workstation provisions a fresh Ubuntu machine into a fully configured, remote-accessible development environment that is ready to run Hermes.
+**Infrastructure as Code for reproducible Ubuntu development workstations.**
 
-The goal is simple:
+Provision a fresh Ubuntu machine into a fully configured, remote-accessible development environment with a single command.
 
-```
-Fresh Ubuntu
-      │
-      ▼
-Run bootstrap.sh
-      │
-      ▼
-Desktop
-RustDesk
-Browsers
-Docker
-Mise
-      │
-      ▼
-Hermes Ready
-```
+![Ubuntu](https://img.shields.io/badge/Ubuntu-24.04-E95420?logo=ubuntu&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-Lightsail-FF9900?logo=amazonaws&logoColor=white)
+![Shell](https://img.shields.io/badge/Shell-Bash-4EAA25?logo=gnubash&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue)
 
-Cloud Workstation is responsible only for the operating system and development environment.
-
-Once Hermes is installed, Hermes becomes responsible for developer tooling, AI agents, workflows, shell customization, project management, and daily operations.
+</div>
 
 ---
 
-# Vision
+## 🚀 Overview
 
-A development workstation should be:
+Cloud Workstation transforms a **fresh Ubuntu server** into a fully configured development workstation ready for remote engineering.
 
-* Reproducible
-* Automated
-* Version controlled
-* Recoverable
-* Consistent
-* Disposable
+Its responsibility is intentionally limited to provisioning the **operating system** and **core infrastructure**.
 
-No workstation should rely on undocumented manual configuration.
+Once the machine is ready, **Hermes** takes over and manages the developer experience, AI tooling, workflows, automation, and project operations.
 
-A brand-new Lightsail instance should become production-ready by executing the bootstrap process.
+```text
+┌──────────────────────┐
+│ Fresh Ubuntu 24.04   │
+└──────────┬───────────┘
+           │
+           ▼
+    ./bootstrap.sh
+           │
+           ▼
+┌──────────────────────┐
+│ XFCE Desktop         │
+│ RustDesk             │
+│ Browsers             │
+│ Docker               │
+│ Mise                 │
+└──────────┬───────────┘
+           │
+           ▼
+      🤖 Hermes Ready
+```
 
 ---
 
-# Project Status
+# ✨ Features
 
-Current Version
-
-```
-v0.1
-```
-
-Status
-
-```
-Under Active Development
-```
-
-Target Platform
-
-* Ubuntu 24.04 LTS
-* AWS Lightsail
+* 🚀 One-command workstation provisioning
+* 🔁 Fully reproducible infrastructure
+* ⚙️ Infrastructure as Code
+* 📦 Modular component architecture
+* 🧩 Configuration-driven installation
+* 🛡️ Idempotent installers
+* 🔍 Built-in verification scripts
+* ☁️ Optimized for AWS Lightsail
+* 🐧 Ubuntu 24.04 LTS support
+* 📚 Version-controlled infrastructure
 
 ---
 
-# Architecture
+# 🎯 Vision
 
-```
-                    Cloud Workstation
+Every development workstation should be:
+
+| Principle             | Description                             |
+| --------------------- | --------------------------------------- |
+| 🔁 Reproducible       | Build identical machines every time     |
+| 🤖 Automated          | Zero manual setup                       |
+| 📚 Version Controlled | Infrastructure lives in Git             |
+| ♻️ Recoverable        | Destroy and recreate anytime            |
+| 📏 Consistent         | Every workstation behaves identically   |
+| 🗑️ Disposable        | Machines should never become snowflakes |
+
+> **No workstation should rely on undocumented manual configuration.**
+
+A brand-new server should become production-ready simply by executing the bootstrap process.
+
+---
+
+# 📦 Project Status
+
+| Property       | Value                 |
+| -------------- | --------------------- |
+| Version        | `v0.1`                |
+| Status         | 🚧 Active Development |
+| Platform       | Ubuntu 24.04 LTS      |
+| Cloud Provider | AWS Lightsail         |
+| Architecture   | Component-Based       |
+
+---
+
+# 🏗️ Architecture
+
+```text
+                    ☁️ Cloud Workstation
 
                      bootstrap.sh
                            │
                            ▼
-                  Component Orchestrator
+                 🔧 Component Orchestrator
                            │
         ┌──────────────────┼──────────────────┐
         ▼                  ▼                  ▼
 
-     System            Desktop           RustDesk
+     🖥 System         🖼 Desktop        🛰 RustDesk
 
         ▼                  ▼                  ▼
 
-     Browsers          Docker              Mise
+     🌐 Browsers       🐳 Docker         📦 Mise
 
+                           │
                            ▼
 
-                        Hermes
+                       🤖 Hermes
 ```
 
 ---
 
-# Responsibilities
+# 🎭 Responsibilities
 
-Cloud Workstation owns:
+## ✅ Cloud Workstation Owns
 
-* Operating system setup
-* Desktop environment
-* Remote desktop
-* Networking
-* Browser installation
-* Docker
-* Docker Compose
-* Mise
-* Base runtime
+Cloud Workstation is responsible for the machine itself.
 
-Cloud Workstation does NOT own:
-
-* Claude Code
-* AI CLIs
-* Dotfiles
-* Shell customization
-* Git configuration
-* SSH configuration
-* Development workflow
-* Project templates
-* Business automation
-
-Those belong to Hermes.
+* 🐧 Operating System
+* 🖥 Desktop Environment
+* 🛰 Remote Desktop
+* 🌐 Networking
+* 🌍 Browser Installation
+* 🐳 Docker Engine
+* 📦 Docker Compose
+* ⚡ Mise Runtime Manager
+* 🔧 Base Runtime Configuration
 
 ---
 
-# Repository Structure
+## ❌ Hermes Owns
 
-```
+Hermes is responsible for the developer experience.
+
+* 🤖 AI Agents
+* 💻 Claude Code
+* 🛠 AI CLI Tools
+* 🐚 Shell Customization
+* 📁 Dotfiles
+* 🔐 Git Configuration
+* 🔑 SSH Configuration
+* 📋 Development Workflows
+* 📦 Project Templates
+* 🏢 Business Automation
+
+This separation keeps responsibilities clean and maintainable.
+
+---
+
+# 📁 Repository Structure
+
+```text
 cloud-workstation/
-
-bootstrap.sh
-
-components/
-    system/
-    desktop/
-    rustdesk/
-    browsers/
-    docker/
-    mise/
-    hermes/
-
-configs/
-    components.conf
-    packages/
-
-docs/
-
-lib/
+│
+├── bootstrap.sh
+│
+├── components/
+│   ├── system/
+│   ├── desktop/
+│   ├── rustdesk/
+│   ├── browsers/
+│   ├── docker/
+│   ├── mise/
+│   └── hermes/
+│
+├── configs/
+│   ├── components.conf
+│   └── packages/
+│
+├── docs/
+│
+└── lib/
 ```
 
 ---
 
-# Components
+# 🧩 Components
 
-## System
+## 🐧 System
 
 Responsibilities
 
 * Update package index
 * Install base packages
+* Configure system essentials
 * Verify installation
 
 ---
 
-## Desktop
+## 🖥️ Desktop
 
 Responsibilities
 
@@ -172,18 +206,18 @@ Responsibilities
 
 ---
 
-## RustDesk
+## 🛰️ RustDesk
 
 Responsibilities
 
 * Install RustDesk
 * Configure firewall
 * Verify service
-* Diagnostics
+* Run diagnostics
 
 ---
 
-## Browsers
+## 🌐 Browsers
 
 Responsibilities
 
@@ -192,134 +226,128 @@ Responsibilities
 
 ---
 
-## Docker
+## 🐳 Docker
 
 Responsibilities
 
 * Install Docker Engine
 * Install Docker Compose Plugin
 * Configure Docker service
-* Configure non-root access
+* Configure non-root Docker access
 
 ---
 
-## Mise
+## 📦 Mise
 
 Responsibilities
 
 * Install Mise
-* Configure shell
-* Install project toolchain
+* Configure shell integration
+* Install project runtimes
 
 ---
 
-## Hermes
+## 🤖 Hermes
 
 Responsibilities
 
 * Clone Hermes
 * Bootstrap Hermes
 
-After this point Cloud Workstation's responsibility ends.
+Once Hermes begins execution, Cloud Workstation's responsibility ends.
 
 ---
 
-# Bootstrap Process
+# ⚙️ Bootstrap Process
 
-```
+```text
 bootstrap.sh
-
-↓
-
-Load libraries
-
-↓
-
-Read component manifest
-
-↓
-
-Run components sequentially
-
-↓
-
-Each component
-
+      │
+      ▼
+Load Libraries
+      │
+      ▼
+Read Component Manifest
+      │
+      ▼
+Execute Components
+      │
+      ▼
 Install
-
-↓
-
+      │
+      ▼
 Verify
-
-↓
-
+      │
+      ▼
 Continue
-
-↓
-
-Complete
+      │
+      ▼
+✔ Workstation Ready
 ```
 
 ---
 
-# Configuration
+# ⚙️ Configuration
 
-The repository is configuration-driven.
+Cloud Workstation is completely configuration-driven.
 
-## Component Order
+## 📋 Component Manifest
 
-```
+```text
 configs/components.conf
 ```
 
-Controls which components are executed and in what order.
+Defines:
+
+* execution order
+* enabled components
+* orchestration flow
 
 ---
 
-## Package Lists
+## 📦 Package Definitions
 
-```
+```text
 configs/packages/
 ```
 
-Each component owns its package definitions.
+Example:
 
-Example
-
-```
+```text
 configs/packages/system.txt
 configs/packages/desktop.txt
 configs/packages/docker.txt
 ```
 
-Installers read these files instead of hardcoding package names.
+Installers never hardcode package names.
 
 ---
 
-# Installation
+# 🚀 Installation
 
 Clone the repository
 
 ```bash
 git clone <repository-url>
+
 cd cloud-workstation
 ```
 
-Run
+Run the bootstrap process
 
 ```bash
 ./bootstrap.sh
 ```
 
-The bootstrap process will execute every enabled component in order.
+The installer will execute every enabled component in sequence.
 
 ---
 
-# Verification
+# ✅ Verification
 
-Each component exposes its own verification script.
+Every component exposes its own verification script.
 
-Example
+Example:
 
 ```bash
 ./components/system/verify.sh
@@ -329,43 +357,70 @@ Example
 ./components/mise/verify.sh
 ```
 
-Verification scripts should always be safe to run repeatedly.
+Verification scripts are designed to be:
+
+* ✅ Safe
+* 🔁 Repeatable
+* ⚡ Fast
+* 🛡️ Idempotent
 
 ---
 
-# Development Workflow
+# 👨‍💻 Development Workflow
 
 When adding a new component:
 
-1. Create the component directory.
-2. Implement `install.sh`.
-3. Implement `verify.sh`.
-4. Add configuration files if required.
-5. Register the component in `configs/components.conf`.
-6. Test on a clean machine.
-7. Commit changes.
+```text
+Create Component
+      │
+      ▼
+Implement install.sh
+      │
+      ▼
+Implement verify.sh
+      │
+      ▼
+Add Configuration
+      │
+      ▼
+Register Component
+      │
+      ▼
+Test on Fresh Machine
+      │
+      ▼
+Commit
+```
 
-Every component must be idempotent.
+Every installer must be **idempotent**.
 
-Running installers multiple times must never break the workstation.
+Running installers multiple times should never break the workstation.
 
 ---
 
-# Design Principles
+# 🧠 Design Principles
 
-## Infrastructure as Code
+## 🏗️ Infrastructure as Code
 
-Every manual step should eventually become code.
-
----
-
-## Idempotency
-
-Running installers multiple times should produce the same result.
+Every manual action should eventually become code.
 
 ---
 
-## Configuration over Hardcoding
+## 🔁 Idempotency
+
+Running installers multiple times should always produce the same result.
+
+---
+
+## ⚙️ Configuration over Hardcoding
+
+```text
+configs/
+    Configuration
+
+components/
+    Logic
+```
 
 Configuration belongs in `configs/`.
 
@@ -373,106 +428,157 @@ Logic belongs in `components/`.
 
 ---
 
-## Small Components
+## 🧩 Small Components
 
-Each component owns one responsibility.
+Each component should own exactly one responsibility.
 
 Avoid large installation scripts.
 
 ---
 
-## Version Control
+## 📚 Version Control
 
-Everything required to reproduce the workstation should live in Git.
-
----
-
-## Reproducibility
-
-The ultimate goal is:
-
-1. Launch a new Ubuntu instance.
-2. Clone this repository.
-3. Execute `bootstrap.sh`.
-4. Obtain a fully configured workstation.
+Everything required to reproduce the workstation belongs in Git.
 
 ---
 
-# Maintenance
+## ♻️ Reproducibility
 
-When adding software:
+The entire workstation should always be reproducible:
+
+```text
+Launch Ubuntu
+      │
+Clone Repository
+      │
+Run bootstrap.sh
+      │
+Hermes Ready
+```
+
+---
+
+# 🛠️ Maintenance
+
+When adding new software:
 
 1. Decide whether it belongs to Cloud Workstation or Hermes.
-2. If it is operating-system or runtime infrastructure, add it here.
-3. If it is developer tooling or workflow automation, add it to Hermes.
+2. Infrastructure belongs here.
+3. Developer tooling belongs to Hermes.
+4. Avoid mixing responsibilities.
 
-Avoid mixing responsibilities.
-
----
-
-# Recovery
-
-Recovery process:
-
-1. Provision a new Ubuntu instance.
-2. Clone this repository.
-3. Run `bootstrap.sh`.
-4. Verify components.
-5. Clone Hermes.
-6. Bootstrap Hermes.
-7. Resume development.
-
-No manual configuration should be required.
+Keeping these layers separate simplifies long-term maintenance.
 
 ---
 
-# Roadmap
+# 🔄 Recovery
 
-## v0.1
+Recovery should always follow the same predictable process.
 
-* Repository foundation
-* Bootstrap engine
-* System
-* Desktop
-* RustDesk
-* Browsers
-* Docker
-* Mise
+```text
+Provision Ubuntu
+      │
+Clone Repository
+      │
+Run bootstrap.sh
+      │
+Verify Components
+      │
+Clone Hermes
+      │
+Bootstrap Hermes
+      │
+Resume Development
+```
 
-## v1.0
-
-* Hermes bootstrap
-* Fresh machine validation
-* Recovery documentation
-* Lightsail base snapshot
+No manual configuration should ever be required.
 
 ---
 
-# Contributing
+# 🛣️ Roadmap
+
+## 🚧 v0.1
+
+* ✅ Repository Foundation
+* ✅ Bootstrap Engine
+* ✅ System Component
+* ✅ Desktop Component
+* ✅ RustDesk Component
+* ✅ Browser Component
+* ✅ Docker Component
+* ✅ Mise Component
+
+---
+
+## 🚀 v1.0
+
+* 🤖 Hermes Bootstrap
+* 🧪 Fresh Machine Validation
+* 📖 Recovery Documentation
+* ☁️ Lightsail Base Snapshot
+
+---
+
+# 🤝 Contributing
 
 Before submitting changes:
 
-* Keep components independent.
-* Do not introduce hidden dependencies.
-* Keep installers idempotent.
-* Keep verification scripts reliable.
-* Prefer configuration over hardcoded values.
-* Test on a clean Ubuntu instance whenever possible.
+* 🧩 Keep components independent
+* 🔁 Maintain idempotency
+* ⚙️ Prefer configuration over hardcoding
+* 🧪 Test on a clean Ubuntu instance
+* 📚 Update documentation when required
 
 ---
 
-# License
+# 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
 ---
 
-# Long-Term Vision
+# 🌍 Long-Term Vision
 
-Cloud Workstation is the foundation of the Createahead engineering platform.
+Cloud Workstation is the infrastructure layer of the **Createahead Engineering Platform**.
 
-Its purpose is not to become a complete developer environment.
+Its goal is **not** to become a complete developer environment.
 
-Its purpose is to reliably provision the operating system and core infrastructure so that Hermes can take over and manage everything above it.
+Instead, it provides a reliable foundation by provisioning the operating system and core runtime.
 
-This separation keeps responsibilities clear, simplifies maintenance, and ensures every new workstation can be created, recovered, or replaced in a predictable and repeatable manner.
+Once the infrastructure is ready, **Hermes** becomes responsible for everything above the operating system.
+
+```text
+                    Createahead Platform
+
+            ┌─────────────────────────────┐
+            │      ☁️ Cloud Workstation    │
+            │─────────────────────────────│
+            │ Ubuntu                      │
+            │ Desktop                     │
+            │ Docker                      │
+            │ Browsers                    │
+            │ Mise                        │
+            └──────────────┬──────────────┘
+                           │
+                           ▼
+            ┌─────────────────────────────┐
+            │         🤖 Hermes           │
+            │─────────────────────────────│
+            │ AI Agents                   │
+            │ Developer Experience        │
+            │ Workflows                   │
+            │ Automation                  │
+            │ Knowledge                   │
+            └─────────────────────────────┘
+```
+
+This clear separation of concerns keeps the platform:
+
+* 🚀 Easy to provision
+* 🔁 Fully reproducible
+* 🛡️ Reliable
+* 📦 Modular
+* ♻️ Recoverable
+* 📈 Easy to evolve over time
+
+**Infrastructure below. Intelligence above.**
