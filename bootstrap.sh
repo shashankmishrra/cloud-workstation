@@ -5,6 +5,7 @@ set -Eeuo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source "${ROOT_DIR}/lib/logging.sh"
+source "${ROOT_DIR}/lib/component.sh"
 
 COMPONENTS_FILE="${ROOT_DIR}/configs/components.conf"
 
@@ -23,16 +24,8 @@ log_success "Loaded ${#COMPONENTS[@]} components"
 echo
 
 for component in "${COMPONENTS[@]}"; do
-    COMPONENT_DIR="${ROOT_DIR}/scripts/${component}"
-
-    if [[ -d "${COMPONENT_DIR}" ]]; then
-        log_success "Found component: ${component}"
-    else
-        log_error "Missing component: ${component}"
-        exit 1
-    fi
+    run_component "${ROOT_DIR}" "${component}"
+    echo
 done
 
-echo
-
-log_success "Bootstrap validation completed successfully."
+log_success "Bootstrap completed successfully."
