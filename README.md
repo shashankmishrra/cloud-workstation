@@ -14,6 +14,11 @@ Provision a fresh Ubuntu machine into a fully configured, remote-accessible deve
 </div>
 
 ---
+<p align="center">
+  <img src="docs/images/cloud-workstation-preview.png" alt="Cloud Workstation Preview" width="900">
+</p>
+
+---
 
 ## 🚀 Overview
 
