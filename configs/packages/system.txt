@@ -1,0 +1,11 @@
+git
+curl
+wget
+ca-certificates
+gnupg
+lsb-release
+software-properties-common
+build-essential
+unzip
+zip
+jq
